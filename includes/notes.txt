@@ -1,0 +1,18 @@
+
+
+select xxxxx from xxxxx where xxxxx
+
+      fields      table       condition
+     
+      vector      string     expression (first = 'christian')
+				Op      (AND or OR)
+			     expression (last = 'molina')
+
+<type, value>
+EXPESSION   = < > <= >=
+OPERATOR
+
+
+
+
+insert into xxxx 

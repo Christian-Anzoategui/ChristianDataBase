@@ -1,0 +1,38 @@
+
+Everything works. From the bottom up. 
+
+BPT, Map, MMap, Parser
+BPlusTree is fully working
+and at one point i was having copy tree issues and re wrote the function.
+What I later realized my original copy tree which used a stack was also
+probably working and that my problem was testing in the main, the copied
+BPT was going out of scope... My Map and MMap both worth with bracket
+operator and all of the rest of the functions. MMap required dups_ok to
+be passed everytime a new BPT was being created and loose insert was
+reworked to handle it as well. Parser can handle all the commands, and
+select has two success states to handle if where is included. The 
+parser's main function is to remove commas/spaces and words not useful 
+for the above class and return a parsed_tree MMap for the high class
+Cdb (SQL) to evaluate and display for the user.
+
+Table
+Table has two ctors, one for dealing with creating a new table
+and vector string on the new field_list, this is handled by CREATE in
+Cdb. the second ctor is for files already made, and when called
+determines _rec_count, remakes fields_map from file: _name.txt, and
+remakes _indices from _name;
+
+Christians Data Base (SQL)
+The design of the upper class was mostly a run loop that parsed commands 
+from the user and would only execute the commands if it passed through
+certain error checking. The parsed_tree stored the commands in uppercase
+to handle user input error then the Cdb will run it through a function
+and put the values back to lower case. Also Table is checked before LOAD
+is called and the rest of the functions verifies that the Table is 
+correctly loaded into the DB before trying to PRINT/INSERT/ETC. SELECT
+fully works and returns a smaller table and prints it out. Had to write
+two select functions in table, one that used the where clause and the
+other that was used when the user specified specific fields that they
+wanted to print. This one instead of reading in the record used iterators
+to cycle through and print the keys(strings) that we wanted to display
+to the user. 
